@@ -1,5 +1,6 @@
 package unasat.sem5.orm.hibernate.dao;
 
+import unasat.sem5.orm.hibernate.config.JPAConfiguration;
 import unasat.sem5.orm.hibernate.entities.Destination;
 
 import javax.persistence.EntityManager;
