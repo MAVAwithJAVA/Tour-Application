@@ -7,7 +7,9 @@ import java.time.Month;
 import java.util.*;
 
 public class TravelPeriodReport implements Chain {
-
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
     private Chain nextInChain;
 
     TravelPlanDAO travelPlanDAO = new TravelPlanDAO();
@@ -23,7 +25,7 @@ public class TravelPeriodReport implements Chain {
     @Override
     public void getReport(String request) {
         if (request.equals("Period report")) {
-            System.out.println("TRAVEL PERIOD REPORT");
+            System.out.println(ANSI_YELLOW+"TRAVEL PERIOD REPORT");
             travelPlanList = travelPlanDAO.retrieveTravelPlans();
 
             for (int index = 0; index < travelPlanList.size(); index++) {
@@ -41,13 +43,13 @@ public class TravelPeriodReport implements Chain {
             TreeMap<Month, Integer> sorted = new TreeMap<>(travelPlanMonthList);
             Set<Map.Entry<Month, Integer>> mappings = sorted.entrySet();
 
-            System.out.println("The following is a list of amount of travel by month");
+            System.out.println(ANSI_YELLOW+ "The following is a list of amount of travel by month");
 
             for (Map.Entry<Month, Integer> val : mappings) {
-                System.out.println("The month " + val.getKey() + " is travelled " + val.getValue() + " times");
+                System.out.println(ANSI_GREEN+"The month " + val.getKey() + ANSI_GREEN+" is travelled " + val.getValue() + ANSI_GREEN+ " times");
             }
         } else {
-            System.out.println("Incorrect request given");
+            System.out.println(ANSI_RED+"Incorrect request given");
         }
     }
 

@@ -10,6 +10,9 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class TravelerDAO {
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
     private EntityManager entityManager = JPAConfiguration.getEntityManager();
 
@@ -69,7 +72,7 @@ public class TravelerDAO {
         entityManager.getTransaction().begin();
         entityManager.persist(traveler);
         entityManager.getTransaction().commit();
-        System.out.println("Traveler has been inserted");
+        System.out.println(ANSI_YELLOW+"Traveler has been inserted");
         return traveler;
     }
 
@@ -101,12 +104,12 @@ public class TravelerDAO {
                 rowsDeleted = query1.executeUpdate();
                 travelGroupDAO.updateTravelGroupDecreaseTravelerCount(travelGroup);
             } else {
-                System.out.println("Only one traveler left in travel package \nRemoval of traveler not allowed");
+                System.out.println(ANSI_YELLOW+ "Only one traveler left in travel package" +ANSI_RED+"\nRemoval of traveler not allowed");
             }
         } else {
-            System.out.println("Traveler not found");
+            System.out.println(ANSI_RED+"Traveler not found");
         }
-        System.out.println("Travelers deleted: " + rowsDeleted);
+        System.out.println(ANSI_YELLOW+"Travelers deleted: " + rowsDeleted);
         entityManager.getTransaction().commit();
         return rowsDeleted;
     }

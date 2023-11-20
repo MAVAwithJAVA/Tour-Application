@@ -3,6 +3,9 @@ package unasat.sem5.orm.hibernate.utilities;
 import java.util.*;
 
 public class RandomGenerator {
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
     private List<String> syllables = new ArrayList<>(Arrays.asList("ja", "zy", "ah", "mad", "sha",
             "vien", "shar", "ven", "cly", "de"));
@@ -41,7 +44,7 @@ public class RandomGenerator {
     }
 
     public void introduction() {
-        System.out.println("Hi, mijn naam is " + getRName() + " " + getRLName());
+        System.out.println(ANSI_GREEN + "Hi, mijn naam is " + getRName() + " " + getRLName());
     }
 
     public String getRPass() {

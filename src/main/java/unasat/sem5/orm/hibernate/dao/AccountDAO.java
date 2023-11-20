@@ -8,6 +8,9 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class AccountDAO {
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
     private EntityManager entityManager = JPAConfiguration.getEntityManager();
 
@@ -21,7 +24,7 @@ public class AccountDAO {
         if (!accountList.isEmpty()) {
             isVerified = true;
         } else {
-            System.out.println("Account couldn't be verified");
+            System.out.println(ANSI_RED+"Account couldn't be verified");
         }
         entityManager.getTransaction().commit();
         return isVerified;
@@ -37,7 +40,7 @@ public class AccountDAO {
         if (!accountList.isEmpty()) {
             account = accountList.get(0);
         } else {
-            System.out.println("Account couldn't be retrieved");
+            System.out.println(ANSI_RED+"Account couldn't be retrieved");
         }
         entityManager.getTransaction().commit();
         return account;

@@ -20,6 +20,9 @@ import unasat.sem5.orm.hibernate.travelpackagefactory.TravelPlanCreator;
 import java.util.Scanner;
 
 public class LoginService {
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
     private boolean inLogin = true;
     private boolean isSuccessful;
@@ -42,35 +45,35 @@ public class LoginService {
     private TravelPackage latestTravelPackageFromAccount;
 
     public void login() {
-        System.out.println("Welcome to your virtual travel agent");
+        System.out.println(ANSI_YELLOW+"Welcome to your virtual travel agent");
         String selection;
         do {
-            System.out.println("Would you like to sign in or sign up");
-            System.out.println("1: Sign up \n2: Sign in \n0: Exit App");
+            System.out.println(ANSI_YELLOW+"Would you like to sign in or sign up");
+            System.out.println(ANSI_GREEN+"1: Sign up \n2: Sign in" +ANSI_RED+ "\n0: Exit App");
             selection = scanner.next();
             switch (selection) {
                 case "1":
-                    System.out.println("Not available yet \n");
+                    System.out.println(ANSI_RED+"Not available yet \n");
                     break;
                 case "2":
                     while (!isSuccessful) {
-                        System.out.println("Enter username: ");
+                        System.out.println(ANSI_GREEN+"Enter username: ");
                         String username = scanner.next();
-                        System.out.println("Enter password: ");
+                        System.out.println(ANSI_GREEN+"Enter password: ");
                         String password = scanner.next();
                         if (accountDAO.verifyAccount(username, password)) {
                             account = accountDAO.retrieveAccount(username, password);
                             if (account.getAccountType().equals("user")) {
                                 latestTravelPackageFromAccount = travelPackageDAO.retrieveLastTravelPackageByAccount(account);
-                                System.out.println("You have successfully signed in \n");
+                                System.out.println(ANSI_YELLOW+"You have successfully signed in \n");
                                 userSection();
                             } else {
-                                System.out.println("You have successfully signed in \n");
+                                System.out.println(ANSI_YELLOW+"You have successfully signed in \n");
                                 adminSection();
                             }
                             isSuccessful = true;
                         } else {
-                            System.out.println("Incorrect username or password entered \n");
+                            System.out.println(ANSI_RED+"Incorrect username or password entered \n");
                             isSuccessful = true;
                         }
                     }
@@ -80,23 +83,23 @@ public class LoginService {
                     inLogin = false;
                     break;
                 default:
-                    System.out.println("Incorrect choice made \nTry again \n");
+                    System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_YELLOW+"\nTry again \n");
                     break;
             }
         } while (inLogin);
-        System.out.println("----------Exiting app---------- \n");
+        System.out.println(ANSI_RED+"----------Exiting app---------- \n");
     }
 
     public void adminSection() {
-        System.out.println("Welcome to the Admin section");
+        System.out.println(ANSI_YELLOW+"Welcome to the Admin section");
         String selection;
         do {
-            System.out.println("What would you like to do");
-            System.out.println("1: Handle data \n2: View admin reports \n0: Sign Out");
+            System.out.println(ANSI_GREEN+"What would you like to do");
+            System.out.println(ANSI_GREEN+"1: Handle data \n2: View admin reports" +ANSI_RED+ "\n0: Sign Out");
             selection = scanner.next();
             switch (selection) {
                 case "1":
-                    System.out.println("Not available yet \n");
+                    System.out.println(ANSI_RED+"Not available yet \n");
                     break;
                 case "2":
                     viewAdminReport();
@@ -105,11 +108,11 @@ public class LoginService {
                     inAdminSection = false;
                     break;
                 default:
-                    System.out.println("Incorrect choice made \nTry again \n");
+                    System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_YELLOW+ "\nTry again \n");
                     break;
             }
         } while (inAdminSection);
-        System.out.println("----------Exiting Admin Section----------\n");
+        System.out.println(ANSI_RED+"----------Exiting Admin Section----------\n");
         inAdminSection = true;
     }
 
@@ -120,13 +123,13 @@ public class LoginService {
         int selection = -1;
         int count;
         do {
-            System.out.println("Which report would you like to view");
+            System.out.println(ANSI_YELLOW+"Which report would you like to view");
             count = 1;
             for (String reportType : adminReport.getReportList()) {
                 System.out.println(count + ": " + reportType);
                 count++;
             }
-            System.out.println("0: Cancel");
+            System.out.println(ANSI_RED+"0: Cancel");
             input = scanner.next();
             if (isStringInt(input)) {
                 selection = Integer.parseInt(input);
@@ -135,21 +138,21 @@ public class LoginService {
                 } else if (selection == 0) {
                     break;
                 } else {
-                    System.out.println("Incorrect choice made \nTry again \n");
+                    System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_YELLOW+ "\nTry again \n");
                 }
             } else {
-                System.out.println("Incorrect choice made \nTry again \n");
+                System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_YELLOW+ "\nTry again \n");
             }
         } while ((selection < 0 || selection >= count));
-        System.out.println("----------End of report----------\n");
+        System.out.println(ANSI_RED+"----------End of report----------\n");
     }
 
     public void userSection() {
-        System.out.println("Welcome to the User section");
+        System.out.println(ANSI_YELLOW+"Welcome to the User section");
         String selection;
         do {
-            System.out.println("What would you like to do");
-            System.out.println("1: Create a travel package \n2: Manage traveler data \n3: View latest travel package report \n0: Sign Out");
+            System.out.println(ANSI_GREEN+"What would you like to do");
+            System.out.println(ANSI_GREEN+"1: Create a travel package \n2: Manage traveler data \n3: View latest travel package report" +ANSI_RED+" \n0: Sign Out");
             selection = scanner.next();
             switch (selection) {
                 case "1":
@@ -165,34 +168,34 @@ public class LoginService {
                     inUserSection = false;
                     break;
                 default:
-                    System.out.println("Incorrect choice made \nTry again \n");
+                    System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_YELLOW+ "\nTry again \n");
                     break;
                 }
             } while (inUserSection);
-        System.out.println("----------Exiting User Section----------\n");
+        System.out.println(ANSI_RED+"----------Exiting User Section----------\n");
         inUserSection = true;
     }
 
     public void createTravelPackage() {
         String selection;
         do {
-            System.out.println("What type of travel would you like");
-            System.out.println("1: Tour \n2: Budget travel \n0: Cancel");
+            System.out.println(ANSI_YELLOW+"What type of travel would you like");
+            System.out.println(ANSI_GREEN+"1: Tour \n2: Budget travel" +ANSI_RED+ "\n0: Cancel");
             selection = scanner.next();
             switch (selection) {
                 case "1":
-                    System.out.println("You choose: Tour");
+                    System.out.println(ANSI_YELLOW+"You choose: Tour");
                     travelPackageCreator(selection);
                     inCreateTravelPackage = false;
                     break;
                 case "2":
-                    System.out.println("You choose: Budget travel");
+                    System.out.println(ANSI_GREEN+"You choose: Budget travel");
                     break;
                 case "0":
                     inCreateTravelPackage = false;
                     break;
                 default:
-                    System.out.println("Incorrect choice made \nTry again \n");
+                    System.out.println(ANSI_RED+"Incorrect choice made\" +ANSI_RED+ \" \nTry again \n");
                     break;
             }
         } while (inCreateTravelPackage);
@@ -200,7 +203,7 @@ public class LoginService {
 //        System.out.println("OVERVIEW OF TRAVEL PACKAGE");
 //        System.out.println(latestTravelPackageFromAccount);
 //        System.out.println("Test: " + travelerDAO.findLastTravelerRecord());
-        System.out.println("----------Exiting Travel Package Creator---------- \n");
+        System.out.println(ANSI_YELLOW+"----------Exiting Travel Package Creator---------- \n");
         inCreateTravelPackage = true;
     }
 
@@ -219,8 +222,8 @@ public class LoginService {
         String selection;
         if (latestTravelPackageFromAccount != null) {
             do {
-                System.out.println("What would you like to do");
-                System.out.println("1: Update travelers in travel package \n2: Remove travelers in travel package \n0: Cancel");
+                System.out.println(ANSI_YELLOW+"What would you like to do");
+                System.out.println(ANSI_GREEN+"1: Update travelers in travel package" +ANSI_RED+ "\n2: Remove travelers in travel package\" +ANSI_RED+ \" \n0: Cancel");
                 selection = scanner.next();
                 switch (selection) {
                     case "1":
@@ -271,7 +274,7 @@ public class LoginService {
             } else if (deletionResult == 0) {
                 System.out.println("Traveler has not been deleted");
             } else {
-                System.out.println("Incorrect passport entered \nTry again \n");
+                System.out.println("Incorrect passport entered\" +ANSI_RED+ \" \nTry again \n");
             }
         }
         while (deletionResult != 1);
@@ -282,7 +285,7 @@ public class LoginService {
         if (latestTravelPackageFromAccount != null) {
             do {
                 System.out.println("How would you like to view your latest travel package");
-                System.out.println("1: Raw report \n2: Text file \n0: Cancel");
+                System.out.println("1: Raw report \n2: Text file\" +ANSI_RED+ \" \n0: Cancel");
                 selection = scanner.next();
                 switch (selection) {
                     case "1":

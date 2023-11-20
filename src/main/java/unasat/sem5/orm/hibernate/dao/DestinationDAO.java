@@ -11,10 +11,6 @@ public class DestinationDAO {
 
     private EntityManager entityManager = JPAConfiguration.getEntityManager();
 
-//    public DestinationDAO(EntityManager entityManager) {
-//        this.entityManager = entityManager;
-//    }
-
     public List<Destination> retrieveDestinationList() {
         entityManager.getTransaction().begin();
         Query query = entityManager.createQuery("select d from Destination d");

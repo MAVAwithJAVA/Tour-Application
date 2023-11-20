@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TourPlanCreator implements TravelPlanCreator {
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
     private List<Destination> retrievedDestinationList;
     private List<Destination> selectedDestinationList = new ArrayList<>();
@@ -30,14 +33,14 @@ public class TourPlanCreator implements TravelPlanCreator {
         retrievedDestinationList = destinationDAO.retrieveDestinationList();
 //        retrievedDestinationList.forEach(System.out::println);
 
-        System.out.println("Choose destinations in order of visit (up to 10 destinations)");
+        System.out.println(ANSI_GREEN + "Choose destinations in order of visit (up to 10 destinations)");
         chooseDestinationByOrder();
 //        selectedDestinationList.forEach(System.out::println);
 
-        System.out.println("Choose start date and end date of travel (up to 31 days of travel)");
+        System.out.println( ANSI_GREEN + "Choose start date and end date of travel (up to 31 days of travel)");
         chooseTravelDuration();
 
-        System.out.println("Choose rating of trip (between 1 and 5 stars)");
+        System.out.println( ANSI_GREEN + "Choose rating of trip (between 1 and 5 stars)");
         chooseAccommodationForEachDestination();
 //        selectedAccommodationList.forEach(System.out::println);
         chooseTransportCompanyBetweenDestinations();
@@ -45,7 +48,7 @@ public class TourPlanCreator implements TravelPlanCreator {
 
         constructSegments();
 
-        System.out.println("Travel plan has been added to database \n");
+        System.out.println(ANSI_YELLOW + "Travel plan has been added to database \n");
     }
 
     public void chooseDestinationByOrder() {
@@ -57,7 +60,7 @@ public class TourPlanCreator implements TravelPlanCreator {
         int[] destinationSelection = new int[10];
         int selectionCount = 0;
         while (selectionCount != destinationSelection.length) {
-            System.out.println("Choose destination by number or enter 0 to finish selection");
+            System.out.println(ANSI_GREEN + "Choose destination by number or enter 0 to finish selection");
             int selectedDestination = scanner.nextInt();
             if (selectedDestination >= 0 && selectedDestination < count) {
                 if (selectedDestination != 0) {
@@ -67,10 +70,10 @@ public class TourPlanCreator implements TravelPlanCreator {
                     break;
                 }
             } else {
-                System.out.println("Selection incorrect, choose one of the corresponding numbers");
+                System.out.println( ANSI_RED + "Selection incorrect, choose one of the corresponding numbers");
             }
         }
-        System.out.println("Selection has been finished");
+        System.out.println( ANSI_YELLOW+ "Selection has been finished");
 
         for (int index : destinationSelection) {
             if (index == 0) {
@@ -78,25 +81,25 @@ public class TourPlanCreator implements TravelPlanCreator {
             }
             selectedDestinationList.add(retrievedDestinationList.get(index - 1));
         }
-        System.out.println("Destination selection has been made");
+        System.out.println( ANSI_YELLOW + "Destination selection has been made");
     }
 
     public void chooseTravelDuration() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(ANSI_GREEN + "dd/MM/yyyy");
         int duration;
         do {
-            System.out.println("Enter start date: (dd/mm/yyyy)");
+            System.out.println( ANSI_GREEN + "Enter start date: (dd/mm/yyyy)");
             LocalDate startDate = LocalDate.parse(scanner.next(), formatter);
-            System.out.println("Enter end date: (dd/mm/yyyy)");
+            System.out.println(ANSI_GREEN + "Enter end date: (dd/mm/yyyy)");
             LocalDate endDate = LocalDate.parse(scanner.next(), formatter);
 
             duration = (int) ChronoUnit.DAYS.between(startDate, endDate);
 
             if (duration >= 1 && duration <= 31) {
-                System.out.println("Travel duration has been chosen");
+                System.out.println( ANSI_YELLOW + "Travel duration has been chosen");
                 currentTravelPlan = travelPlanDAO.insertTravelPlan(new TravelPlan(startDate, endDate, duration));
             } else {
-                System.out.println("Incorrect travel duration chosen (up to 31 days)");
+                System.out.println( ANSI_RED + "Incorrect travel duration chosen (up to 31 days)");
             }
         } while (duration < 1 || duration > 31);
     }
@@ -109,9 +112,9 @@ public class TourPlanCreator implements TravelPlanCreator {
                 for (Destination destination : selectedDestinationList) {
                     selectedAccommodationList.add(accomodationDAO.findAccomodationByDestinationAndRating(destination.getDestinationId(), rating));
                 }
-                System.out.println("Accommodation selection has been made");
+                System.out.println(ANSI_YELLOW + "Accommodation selection has been made");
             } else {
-                System.out.println("Incorrect rating chosen (between 1 and 5 stars)");
+                System.out.println( ANSI_RED + "Incorrect rating chosen (between 1 and 5 stars)");
             }
         } while (rating < 1 || rating > 5);
     }

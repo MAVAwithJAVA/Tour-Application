@@ -8,6 +8,9 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class TransportCompanyDAO {
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
     private EntityManager entityManager = JPAConfiguration.getEntityManager();;
 
@@ -26,7 +29,7 @@ public class TransportCompanyDAO {
         if (!transportCompanyList.isEmpty()) {
             correspondingTransportCompany = transportCompanyList.get(0);
         } else {
-            System.out.println("no corresponding transport company");
+            System.out.println(ANSI_RED+"no corresponding transport company");
         }
         entityManager.getTransaction().commit();
         return correspondingTransportCompany;

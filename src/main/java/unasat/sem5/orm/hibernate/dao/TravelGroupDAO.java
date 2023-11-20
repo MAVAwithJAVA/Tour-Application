@@ -9,6 +9,9 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class TravelGroupDAO {
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
     private EntityManager entityManager = JPAConfiguration.getEntityManager();
 
@@ -35,7 +38,7 @@ public class TravelGroupDAO {
         if (!travelGroupList.isEmpty()) {
             travelGroup = travelGroupList.get(0);
         } else {
-            System.out.println("No travel group found");
+            System.out.println(ANSI_RED+"No travel group found");
         }
 //        entityManager.getTransaction().commit();
         return travelGroup;
@@ -73,7 +76,7 @@ public class TravelGroupDAO {
         query.setParameter("travelerGroupUpdate", travelGroup.getTravelerCount() - 1);
         query.setParameter("travelGroupId", travelGroup.getTravelGroupId());
         int rowsUpdated = query.executeUpdate();
-        System.out.println("Travel group updated: " + rowsUpdated);
+        System.out.println(ANSI_YELLOW+"Travel group updated: " + rowsUpdated);
 //        entityManager.getTransaction().commit();
         return rowsUpdated;
     }
