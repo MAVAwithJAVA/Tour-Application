@@ -1,0 +1,2 @@
+INSERT INTO `travel_app_console`.`account` (`account_id`, `account_type`, `password`, `username`) VALUES ('1', 'user', '1234ab.', 'shivan');
+INSERT INTO `travel_app_console`.`account` (`account_id`, `account_type`, `password`, `username`) VALUES ('2', 'admin', 'admin', 'admin');

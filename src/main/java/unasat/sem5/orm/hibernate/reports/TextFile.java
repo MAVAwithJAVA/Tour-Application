@@ -5,6 +5,9 @@ import unasat.sem5.orm.hibernate.entities.*;
 import java.util.Set;
 
 public class TextFile implements File {
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
     private Account account;
 
@@ -26,17 +29,17 @@ public class TextFile implements File {
 
     @Override
     public void readReport() {
-        System.out.println("TEXT REPORT OF TRAVEL PACKAGE");
-        System.out.println("The following is a text report of the travel package created by user " + account.getUsername() + ".");
-        System.out.println("The user has booked a trip from " + travelPlan.getStartDate() + " until " + travelPlan.getEndDate() +
-                " for a duration of " + travelPlan.getDuration() + " days.");
+        System.out.println(ANSI_YELLOW+"TEXT REPORT OF TRAVEL PACKAGE");
+        System.out.println(ANSI_GREEN+"The following is a text report of the travel package created by user " + account.getUsername() + ".");
+        System.out.println(ANSI_GREEN+"The user has booked a trip from " + travelPlan.getStartDate() + ANSI_GREEN+" until " + travelPlan.getEndDate() +
+                ANSI_GREEN+" for a duration of " + travelPlan.getDuration() + ANSI_GREEN+" days.");
         if (travelers != null) {
-            System.out.println("The travelers on this trip will be " + getTravelerNames() + " for a total of " +
-                    travelGroup.getTravelerCount() + " travelers.");
-            System.out.println("The locations that will be visited are " + getLocations());
+            System.out.println(ANSI_GREEN+"The travelers on this trip will be " + getTravelerNames() + ANSI_GREEN+" for a total of " +
+                    travelGroup.getTravelerCount() + ANSI_GREEN+" travelers.");
+            System.out.println(ANSI_GREEN+"The locations that will be visited are " + getLocations());
         }
-        System.out.println("Enjoy your trip ;-) \n");
-        System.out.println("----------End of report----------");
+        System.out.println(ANSI_GREEN+"Enjoy your trip \n");
+        System.out.println(ANSI_YELLOW+"----------End of report----------");
 
     }
 

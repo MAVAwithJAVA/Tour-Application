@@ -1,0 +1,10 @@
+INSERT INTO `travel_app_console`.`destination` (`destination_id`, `city`, `country`, `location`) VALUES ('1', 'Amsterdam', 'Netherlands', 'Amsterdam');
+INSERT INTO `travel_app_console`.`destination` (`destination_id`, `city`, `country`, `location`) VALUES ('2', 'Berlin', 'Germany', 'Berlin');
+INSERT INTO `travel_app_console`.`destination` (`destination_id`, `city`, `country`, `location`) VALUES ('3', 'Copenhagen', 'Denmark', 'Copenhagen');
+INSERT INTO `travel_app_console`.`destination` (`destination_id`, `city`, `country`, `location`) VALUES ('4', 'Dublin', 'Ireland', 'Dublin');
+INSERT INTO `travel_app_console`.`destination` (`destination_id`, `city`, `country`, `location`) VALUES ('5', 'Edinburgh', 'Scotland', 'Edinburgh');
+INSERT INTO `travel_app_console`.`destination` (`destination_id`, `city`, `country`, `location`) VALUES ('6', 'Florence', 'Italy', 'Florence');
+INSERT INTO `travel_app_console`.`destination` (`destination_id`, `city`, `country`, `location`) VALUES ('7', 'Geneva', 'Switzerland', 'Geneva');
+INSERT INTO `travel_app_console`.`destination` (`destination_id`, `city`, `country`, `location`) VALUES ('8', 'Helsinki', 'Finland', 'Helsinki');
+INSERT INTO `travel_app_console`.`destination` (`destination_id`, `city`, `country`, `location`) VALUES ('9', 'Istanbul', 'Turkey', 'Istanbul');
+INSERT INTO `travel_app_console`.`destination` (`destination_id`, `city`, `country`, `location`) VALUES ('10', 'Jerusalem', 'Israel', 'Jerusalem');

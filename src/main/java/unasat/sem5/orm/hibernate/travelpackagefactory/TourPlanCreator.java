@@ -14,6 +14,8 @@ public class TourPlanCreator implements TravelPlanCreator {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+
 
     private List<Destination> retrievedDestinationList;
     private List<Destination> selectedDestinationList = new ArrayList<>();
@@ -33,14 +35,14 @@ public class TourPlanCreator implements TravelPlanCreator {
         retrievedDestinationList = destinationDAO.retrieveDestinationList();
 //        retrievedDestinationList.forEach(System.out::println);
 
-        System.out.println(ANSI_GREEN + "Choose destinations in order of visit (up to 10 destinations)");
+        System.out.println(ANSI_YELLOW + "Choose destinations in order of visit (up to 10 destinations)");
         chooseDestinationByOrder();
 //        selectedDestinationList.forEach(System.out::println);
 
-        System.out.println( ANSI_GREEN + "Choose start date and end date of travel (up to 31 days of travel)");
+        System.out.println( ANSI_YELLOW + "Choose start date and end date of travel (up to 31 days of travel)");
         chooseTravelDuration();
 
-        System.out.println( ANSI_GREEN + "Choose rating of trip (between 1 and 5 stars)");
+        System.out.println( ANSI_YELLOW + "Choose rating of trip (between 1 and 5 stars)");
         chooseAccommodationForEachDestination();
 //        selectedAccommodationList.forEach(System.out::println);
         chooseTransportCompanyBetweenDestinations();
@@ -60,7 +62,7 @@ public class TourPlanCreator implements TravelPlanCreator {
         int[] destinationSelection = new int[10];
         int selectionCount = 0;
         while (selectionCount != destinationSelection.length) {
-            System.out.println(ANSI_GREEN + "Choose destination by number or enter 0 to finish selection");
+            System.out.println(ANSI_GREEN + "Choose destination by number" +ANSI_PURPLE+"or" +ANSI_RED+"enter 0 to finish selection");
             int selectedDestination = scanner.nextInt();
             if (selectedDestination >= 0 && selectedDestination < count) {
                 if (selectedDestination != 0) {
@@ -85,7 +87,7 @@ public class TourPlanCreator implements TravelPlanCreator {
     }
 
     public void chooseTravelDuration() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(ANSI_GREEN + "dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         int duration;
         do {
             System.out.println( ANSI_GREEN + "Enter start date: (dd/mm/yyyy)");

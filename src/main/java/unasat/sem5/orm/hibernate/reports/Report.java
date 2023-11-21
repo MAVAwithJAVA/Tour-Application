@@ -2,6 +2,6 @@ package unasat.sem5.orm.hibernate.reports;
 
 public interface Report {
 
-    public void displayReport();
+    public void displayRawReport();
 
 }

@@ -35,13 +35,13 @@ public class LoginService {
 
     private Scanner scanner = new Scanner(System.in);
 
-    private AccountDAO accountDAO = new AccountDAO();
+    private final AccountDAO accountDAO = new AccountDAO();
     private Account account;
     private AdminReportHandler adminReportHandler;
     private AdminReport adminReport;
-    private TravelerDAO travelerDAO = new TravelerDAO();
-    private TravelGroupDAO travelGroupDAO = new TravelGroupDAO();
-    private TravelPackageDAO travelPackageDAO = new TravelPackageDAO();
+    private final TravelerDAO travelerDAO = new TravelerDAO();
+    private final TravelGroupDAO travelGroupDAO = new TravelGroupDAO();
+    private final TravelPackageDAO travelPackageDAO = new TravelPackageDAO();
     private TravelPackage latestTravelPackageFromAccount;
 
     public void login() {
@@ -223,7 +223,7 @@ public class LoginService {
         if (latestTravelPackageFromAccount != null) {
             do {
                 System.out.println(ANSI_YELLOW+"What would you like to do");
-                System.out.println(ANSI_GREEN+"1: Update travelers in travel package" +ANSI_RED+ "\n2: Remove travelers in travel package\" +ANSI_RED+ \" \n0: Cancel");
+                System.out.println(ANSI_GREEN+"1: Update travelers in travel package" +ANSI_RED+ "\n2: Remove travelers in travel package" +ANSI_RED+ "\n0: Cancel");
                 selection = scanner.next();
                 switch (selection) {
                     case "1":
@@ -274,7 +274,7 @@ public class LoginService {
             } else if (deletionResult == 0) {
                 System.out.println("Traveler has not been deleted");
             } else {
-                System.out.println("Incorrect passport entered\" +ANSI_RED+ \" \nTry again \n");
+                System.out.println("Incorrect passport entered" +ANSI_RED+ "\nTry again \n");
             }
         }
         while (deletionResult != 1);
@@ -284,18 +284,19 @@ public class LoginService {
         String selection;
         if (latestTravelPackageFromAccount != null) {
             do {
-                System.out.println("How would you like to view your latest travel package");
-                System.out.println("1: Raw report \n2: Text file\" +ANSI_RED+ \" \n0: Cancel");
+                System.out.println(ANSI_YELLOW+"How would you like to view your latest travel package");
+                System.out.println(ANSI_GREEN+"1: Raw report \n2: Text file" +ANSI_RED+ "\n0: Cancel");
                 selection = scanner.next();
                 switch (selection) {
                     case "1":
                         RawReport rawReport = new RawReport(latestTravelPackageFromAccount);
-                        rawReport.displayReport();
+                        rawReport.displayRawReport();
                         inViewTravelPackageReport = false;
                         break;
                     case "2":
+                        // Design Pattern (Adapter Class Oproepen)
                         ReportAdapter reportAdapter = new ReportAdapter(new TextFile(latestTravelPackageFromAccount));
-                        reportAdapter.displayReport();
+                        reportAdapter.displayRawReport();
                         inViewTravelPackageReport = false;
                         break;
                     case "0":

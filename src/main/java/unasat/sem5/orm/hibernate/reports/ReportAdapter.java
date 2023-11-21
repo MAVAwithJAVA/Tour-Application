@@ -1,6 +1,8 @@
 package unasat.sem5.orm.hibernate.reports;
 
+
 public class ReportAdapter implements Report {
+    // 2 soorten adapters nl: Calls adapter en Object Adapter
 
     File file;
 
@@ -9,7 +11,7 @@ public class ReportAdapter implements Report {
     }
 
     @Override
-    public void displayReport() {
+    public void displayRawReport() {
         file.readReport();
     }
 

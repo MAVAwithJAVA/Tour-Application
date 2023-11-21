@@ -33,6 +33,7 @@ public class Traveler {
         this.age = age;
     }
 
+    @Deprecated
     public Traveler(Long travelerId, String firstName, String lastName, String passport, int age) {
         this.travelerId = travelerId;
         this.firstName = firstName;
