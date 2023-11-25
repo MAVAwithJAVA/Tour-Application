@@ -60,13 +60,7 @@ public class Destination {
         this.location = location;
     }
 
-    public Set<TransportCompany> getTransportCompanies() {
-        return transportCompanies;
-    }
 
-    public void setTransportCompanies(Set<TransportCompany> transportCompanies) {
-        this.transportCompanies = transportCompanies;
-    }
 
     @Override
     public String toString() {

@@ -33,15 +33,6 @@ public class Traveler {
         this.age = age;
     }
 
-    @Deprecated
-    public Traveler(Long travelerId, String firstName, String lastName, String passport, int age) {
-        this.travelerId = travelerId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.passport = passport;
-        this.age = age;
-    }
-
     public Traveler(String firstName, String lastName, String passport, int age, TravelGroup travelGroup) {
         this.firstName = firstName;
         this.lastName = lastName;

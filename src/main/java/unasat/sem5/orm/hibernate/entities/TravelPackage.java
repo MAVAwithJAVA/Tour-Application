@@ -57,9 +57,6 @@ public class TravelPackage {
         return travelPlan;
     }
 
-    public void setTravelPlan(TravelPlan travelPlan) {
-        this.travelPlan = travelPlan;
-    }
 
     public Account getAccount() {
         return account;

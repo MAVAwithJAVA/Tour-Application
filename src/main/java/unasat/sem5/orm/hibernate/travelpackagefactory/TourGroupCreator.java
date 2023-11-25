@@ -12,12 +12,9 @@ public class TourGroupCreator implements TravelGroupCreator {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_YELLOW = "\u001B[33m";
-
     private TravelGroup currentTravelGroup;
     private boolean isSuccessful;
-
     private Scanner scanner = new Scanner(System.in);
-
     private TravelerDAO travelerDAO = new TravelerDAO();
     private TravelGroupDAO travelGroupDAO = new TravelGroupDAO();
     private RandomGenerator rg = new RandomGenerator();

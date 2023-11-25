@@ -6,6 +6,7 @@ import unasat.sem5.orm.hibernate.services.LoginService;
 public class App {
 
     public static void main(String[] args) {
+        // Waarom Werkt die Fucking ding nog niet!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //        EntityManager entityManager = JPAConfiguration.getEntityManager();
 

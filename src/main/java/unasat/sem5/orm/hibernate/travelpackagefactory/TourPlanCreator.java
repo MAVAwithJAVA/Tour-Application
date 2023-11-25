@@ -15,16 +15,12 @@ public class TourPlanCreator implements TravelPlanCreator {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_PURPLE = "\u001B[35m";
-
-
     private List<Destination> retrievedDestinationList;
     private List<Destination> selectedDestinationList = new ArrayList<>();
     private List<Accommodation> selectedAccommodationList = new ArrayList<>();
     private List<TransportCompany> selectedTransportCompanyList = new ArrayList<>();
     private TravelPlan currentTravelPlan;
-
     private Scanner scanner = new Scanner(System.in);
-
     private TravelSegmentDAO travelSegmentDAO = new TravelSegmentDAO();
     private TravelPlanDAO travelPlanDAO = new TravelPlanDAO();
     private DestinationDAO destinationDAO = new DestinationDAO();
@@ -62,7 +58,7 @@ public class TourPlanCreator implements TravelPlanCreator {
         int[] destinationSelection = new int[10];
         int selectionCount = 0;
         while (selectionCount != destinationSelection.length) {
-            System.out.println(ANSI_GREEN + "Choose destination by number" +ANSI_PURPLE+"or" +ANSI_RED+"enter 0 to finish selection");
+            System.out.println(ANSI_GREEN + "Choose destination by number" +ANSI_PURPLE+ "or" +ANSI_RED+ "enter 0 to finish selection");
             int selectedDestination = scanner.nextInt();
             if (selectedDestination >= 0 && selectedDestination < count) {
                 if (selectedDestination != 0) {

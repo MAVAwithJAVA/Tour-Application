@@ -43,10 +43,12 @@ public class RandomGenerator {
         return name.substring(0, 1).toUpperCase() + name.substring(1);
     }
 
+    @Deprecated
     public void introduction() {
         System.out.println(ANSI_GREEN + "Hi, mijn naam is " + getRName() + " " + getRLName());
     }
 
+    @Deprecated
     public String getRPass() {
         int leftLimit = 48; // numeral '0'
         int rightLimit = 122; // letter 'z'
@@ -64,6 +66,7 @@ public class RandomGenerator {
         return generatedString;
     }
 
+    @Deprecated
     public float getRandomFloat() {
         float minAmount = 10.0f;
         float maxAmount = 100.0f;
@@ -73,6 +76,7 @@ public class RandomGenerator {
         return randomAmount;
     }
 
+    @Deprecated
     public int getRAge() {
         int min = 15;
         int max = 80;

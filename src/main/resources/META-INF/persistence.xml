@@ -17,7 +17,6 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
             <property name="hibernate.show_sql" value="false" />
             <property name="hibernate.hbm2ddl.auto" value="update" />
-
             <!-- Flyway Configuration -->
             <property name="flyway.url" value="jdbc:mysql://localhost:3306/travel_app_console?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />
             <property name="flyway.user" value="root" />
@@ -26,6 +25,5 @@
             <property name="flyway.baselineOnMigrate" value="true" />
             <property name="flyway.enabled" value="true"/>
         </properties>
-
     </persistence-unit>
 </persistence>

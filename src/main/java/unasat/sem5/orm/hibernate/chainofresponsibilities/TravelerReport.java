@@ -20,8 +20,8 @@ public class TravelerReport implements Chain {
     @Override
     public void getReport(String request) {
         if (request.equals("Traveler report")) {
-            System.out.println(ANSI_YELLOW+"TRAVELER REPORT");
-            System.out.println(travelerDAO.countTravelers() + ANSI_YELLOW +" people have travelled with us");
+            System.out.println(ANSI_YELLOW+ "TRAVELER REPORT");
+            System.out.println(travelerDAO.countTravelers() + ANSI_YELLOW + "people have travelled with us");
             int count = 1;
             for (Traveler traveler : travelerDAO.findAllTravelers()) {
                 System.out.println(count + ": " + traveler.getFirstName() + ", " + traveler.getLastName() + ", " +

@@ -23,24 +23,19 @@ public class LoginService {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_YELLOW = "\u001B[33m";
-
     private boolean inLogin = true;
     private boolean isSuccessful;
     private boolean inAdminSection = true;
-    private boolean inAdminReport = true;
     private boolean inUserSection = true;
     private boolean inCreateTravelPackage = true;
     private boolean inViewTravelPackageReport = true;
     private boolean inManageTravelerData = true;
-
     private Scanner scanner = new Scanner(System.in);
-
     private final AccountDAO accountDAO = new AccountDAO();
     private Account account;
     private AdminReportHandler adminReportHandler;
     private AdminReport adminReport;
     private final TravelerDAO travelerDAO = new TravelerDAO();
-    private final TravelGroupDAO travelGroupDAO = new TravelGroupDAO();
     private final TravelPackageDAO travelPackageDAO = new TravelPackageDAO();
     private TravelPackage latestTravelPackageFromAccount;
 
@@ -211,7 +206,6 @@ public class LoginService {
         TravelGroupCreator travelGroupCreator = TravelPackageFactory.createTravelGroup(Integer.parseInt(selection));
         TravelPlanCreator travelPlanCreator = TravelPackageFactory.createTravelPlan(Integer.parseInt(selection));
         TravelPackageCreator travelPackageCreator = TravelPackageFactory.createTravelPackage(Integer.parseInt(selection));
-
         travelGroupCreator.addTravelGroupToDatabase();
         travelPlanCreator.addTravelPlanToDatabase();
         latestTravelPackageFromAccount = travelPackageCreator.addTravelPackageToDatabase(account);
@@ -236,50 +230,52 @@ public class LoginService {
                         inManageTravelerData = false;
                         break;
                     default:
-                        System.out.println("Incorrect choice made \nTry again \n");
+                        System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_YELLOW+ "\nTry again \n");
                         break;
                 }
             } while (inManageTravelerData);
         } else {
-            System.out.println("You have no travel packages yet \n");
+            System.out.println(ANSI_RED+"You have no travel packages yet \n");
         }
-        System.out.println("----------Exiting Traveler Data Manager----------");
+        System.out.println(ANSI_RED+"----------Exiting Traveler Data Manager----------");
         inManageTravelerData = true;
     }
 
     public void updateTravelers() {
-        System.out.println("Enter updated information of traveler");
-        System.out.println("Enter first name: ");
+        System.out.println(ANSI_YELLOW+"Enter updated information of traveler");
+        System.out.println(ANSI_GREEN+"Enter first name: ");
         String firstName = scanner.next();
-        System.out.println("Enter last name: ");
+        System.out.println(ANSI_GREEN+"Enter last name: ");
         String lastName = scanner.next();
-        System.out.println("Enter passport: ");
+        System.out.println(ANSI_GREEN+"Enter passport: ");
         String passport = scanner.next();
-        System.out.println("Enter age: ");
+        System.out.println(ANSI_GREEN+"Enter age: ");
         int age = scanner.nextInt();
         Traveler traveler = new Traveler(firstName, lastName, passport, age);
         travelerDAO.updateTraveler(traveler);
-        System.out.println("Traveler has been updated");
+        System.out.println(ANSI_YELLOW+"Traveler has been updated");
     }
 
+//    Logica For Deleting Travelers....
     public void deleteTraveler() {
         int deletionResult = 2;
         do {
-            System.out.println("Enter passport of traveler to be removed");
-            System.out.println("Enter passport: ");
+            System.out.println(ANSI_YELLOW+"Enter passport of traveler to be removed");
+            System.out.println(ANSI_GREEN+"Enter passport: ");
             String passport = scanner.next();
             deletionResult = travelerDAO.deleteTraveler(passport);
             if (deletionResult == 1) {
-                System.out.println("Traveler has been deleted");
+                System.out.println(ANSI_YELLOW+"Traveler has been deleted");
             } else if (deletionResult == 0) {
-                System.out.println("Traveler has not been deleted");
+                System.out.println(ANSI_RED+"Traveler has not been deleted");
             } else {
-                System.out.println("Incorrect passport entered" +ANSI_RED+ "\nTry again \n");
+                System.out.println(ANSI_RED+"Incorrect passport entered" +ANSI_RED+ "\nTry again \n");
             }
         }
         while (deletionResult != 1);
     }
 
+//    View Travelers Report Package
     public void viewTravelPackageReport() {
         String selection;
         if (latestTravelPackageFromAccount != null) {
@@ -303,14 +299,14 @@ public class LoginService {
                         inViewTravelPackageReport = false;
                         break;
                     default:
-                        System.out.println("Incorrect choice made \nTry again \n");
+                        System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_GREEN+ "\nTry again \n");
                         break;
                 }
             } while (inViewTravelPackageReport);
         } else {
-            System.out.println("You have no travel packages yet \n");
+            System.out.println(ANSI_RED+"You have no travel packages yet \n");
         }
-        System.out.println("----------Exiting Travel Package Viewer---------- \n");
+        System.out.println(ANSI_RED+"----------Exiting Travel Package Viewer---------- \n");
         inViewTravelPackageReport = true;
     }
 
