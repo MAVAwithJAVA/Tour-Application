@@ -4,7 +4,6 @@ import unasat.sem5.orm.hibernate.dao.TravelGroupDAO;
 import unasat.sem5.orm.hibernate.dao.TravelerDAO;
 import unasat.sem5.orm.hibernate.entities.TravelGroup;
 import unasat.sem5.orm.hibernate.entities.Traveler;
-import unasat.sem5.orm.hibernate.utilities.RandomGenerator;
 
 import java.util.Scanner;
 
@@ -20,7 +19,7 @@ public class BudgetGroupCreator implements TravelGroupCreator{
 
     private TravelerDAO travelerDAO = new TravelerDAO();
     private TravelGroupDAO travelGroupDAO = new TravelGroupDAO();
-    private RandomGenerator rg = new RandomGenerator();
+//    private RandomGenerator rg = new RandomGenerator();
 
     @Override
     public void addTravelGroupToDatabase() {

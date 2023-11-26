@@ -64,7 +64,7 @@ public class LoginService {
                                 userSection();
                             } else {
                                 System.out.println(ANSI_YELLOW+"You have successfully signed in \n");
-                                adminSection();
+//                                adminSection();
                             }
                             isSuccessful = true;
                         } else {
@@ -85,62 +85,62 @@ public class LoginService {
         System.out.println(ANSI_RED+"----------Exiting app---------- \n");
     }
 
-    public void adminSection() {
-        System.out.println(ANSI_YELLOW+"Welcome to the Admin section");
-        String selection;
-        do {
-            System.out.println(ANSI_GREEN+"What would you like to do");
-            System.out.println(ANSI_GREEN+"1: Handle data \n2: View admin reports" +ANSI_RED+ "\n0: Sign Out");
-            selection = scanner.next();
-            switch (selection) {
-                case "1":
-                    System.out.println(ANSI_RED+"Not available yet \n");
-                    break;
-                case "2":
-                    viewAdminReport();
-                    break;
-                case "0":
-                    inAdminSection = false;
-                    break;
-                default:
-                    System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_YELLOW+ "\nTry again \n");
-                    break;
-            }
-        } while (inAdminSection);
-        System.out.println(ANSI_RED+"----------Exiting Admin Section----------\n");
-        inAdminSection = true;
-    }
-
-    public void viewAdminReport() {
-        adminReport = new AdminReport();
-        adminReportHandler = new AdminReportHandler();
-        String input;
-        int selection = -1;
-        int count;
-        do {
-            System.out.println(ANSI_YELLOW+"Which report would you like to view");
-            count = 1;
-            for (String reportType : adminReport.getReportList()) {
-                System.out.println(count + ": " + reportType);
-                count++;
-            }
-            System.out.println(ANSI_RED+"0: Cancel");
-            input = scanner.next();
-            if (isStringInt(input)) {
-                selection = Integer.parseInt(input);
-                if (selection >= 1 && selection < count) {
-                    adminReportHandler.startHandling(selection);
-                } else if (selection == 0) {
-                    break;
-                } else {
-                    System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_YELLOW+ "\nTry again \n");
-                }
-            } else {
-                System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_YELLOW+ "\nTry again \n");
-            }
-        } while ((selection < 0 || selection >= count));
-        System.out.println(ANSI_RED+"----------End of report----------\n");
-    }
+//    public void adminSection() {
+//        System.out.println(ANSI_YELLOW+"Welcome to the Admin section");
+//        String selection;
+//        do {
+//            System.out.println(ANSI_GREEN+"What would you like to do");
+//            System.out.println(ANSI_GREEN+"1: Handle data \n2: View admin reports" +ANSI_RED+ "\n0: Sign Out");
+//            selection = scanner.next();
+//            switch (selection) {
+//                case "1":
+//                    System.out.println(ANSI_RED+"Not available yet \n");
+//                    break;
+//                case "2":
+//                    viewAdminReport();
+//                    break;
+//                case "0":
+//                    inAdminSection = false;
+//                    break;
+//                default:
+//                    System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_YELLOW+ "\nTry again \n");
+//                    break;
+//            }
+//        } while (inAdminSection);
+//        System.out.println(ANSI_RED+"----------Exiting Admin Section----------\n");
+//        inAdminSection = true;
+//    }
+//
+//    public void viewAdminReport() {
+//        adminReport = new AdminReport();
+//        adminReportHandler = new AdminReportHandler();
+//        String input;
+//        int selection = -1;
+//        int count;
+//        do {
+//            System.out.println(ANSI_YELLOW+"Which report would you like to view");
+//            count = 1;
+//            for (String reportType : adminReport.getReportList()) {
+//                System.out.println(count + ": " + reportType);
+//                count++;
+//            }
+//            System.out.println(ANSI_RED+"0: Cancel");
+//            input = scanner.next();
+//            if (isStringInt(input)) {
+//                selection = Integer.parseInt(input);
+//                if (selection >= 1 && selection < count) {
+//                    adminReportHandler.startHandling(selection);
+//                } else if (selection == 0) {
+//                    break;
+//                } else {
+//                    System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_YELLOW+ "\nTry again \n");
+//                }
+//            } else {
+//                System.out.println(ANSI_RED+"Incorrect choice made" +ANSI_YELLOW+ "\nTry again \n");
+//            }
+//        } while ((selection < 0 || selection >= count));
+//        System.out.println(ANSI_RED+"----------End of report----------\n");
+//    }
 
     public void userSection() {
         System.out.println(ANSI_YELLOW+"Welcome to the User section");
@@ -175,7 +175,7 @@ public class LoginService {
         String selection;
         do {
             System.out.println(ANSI_YELLOW+"What type of travel would you like");
-            System.out.println(ANSI_GREEN+"1: Tour \n2: Budget travel" +ANSI_RED+ "\n0: Cancel");
+            System.out.println(ANSI_GREEN+"1: Tour" +ANSI_RED+ "\n0: Cancel");
             selection = scanner.next();
             switch (selection) {
                 case "1":

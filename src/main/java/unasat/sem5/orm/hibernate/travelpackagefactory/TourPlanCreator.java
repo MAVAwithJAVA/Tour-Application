@@ -58,7 +58,7 @@ public class TourPlanCreator implements TravelPlanCreator {
         int[] destinationSelection = new int[10];
         int selectionCount = 0;
         while (selectionCount != destinationSelection.length) {
-            System.out.println(ANSI_GREEN + "Choose destination by number" +ANSI_PURPLE+ "or" +ANSI_RED+ "enter 0 to finish selection");
+            System.out.println(ANSI_GREEN + "Choose destination by number" +ANSI_PURPLE+ " " + "or" + " " +ANSI_RED+ "enter 0 to finish selection");
             int selectedDestination = scanner.nextInt();
             if (selectedDestination >= 0 && selectedDestination < count) {
                 if (selectedDestination != 0) {
