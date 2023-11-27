@@ -51,6 +51,7 @@ public class TourPlanCreator implements TravelPlanCreator {
 
     public void chooseDestinationByOrder() {
         int count = 1;
+        // Opgehaalde Destination data vanuit de Dataabse...
         for (Destination destination : retrievedDestinationList) {
             System.out.println(count + ": " + destination.getCountry() + ", " + destination.getCity() + ", " + destination.getLocation());
             count++;

@@ -8,9 +8,9 @@ public class TravelPackageFactory {
             case 1:
                 travelGroupCreator = new TourGroupCreator();
                 break;
-            case 2:
-                travelGroupCreator = new BudgetGroupCreator();
-                break;
+//            case 2:
+//                travelGroupCreator = new BudgetGroupCreator();
+//                break;
         }
         return travelGroupCreator;
     }
@@ -21,9 +21,9 @@ public class TravelPackageFactory {
             case 1:
                 travelPlanCreator = new TourPlanCreator();
                 break;
-            case 2:
-                travelPlanCreator = new BudgetPlanCreator();
-                break;
+//            case 2:
+//                travelPlanCreator = new BudgetPlanCreator();
+//                break;
         }
         return travelPlanCreator;
     }
@@ -34,9 +34,9 @@ public class TravelPackageFactory {
             case 1:
                 travelPackageCreator = new TourPackageCreator();
                 break;
-            case 2:
-                travelPackageCreator = new BudgetPackageCreator();
-                break;
+//            case 2:
+//                travelPackageCreator = new BudgetPackageCreator();
+//                break;
         }
         return travelPackageCreator;
     }

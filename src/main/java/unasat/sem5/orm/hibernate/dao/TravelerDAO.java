@@ -97,6 +97,7 @@ public class TravelerDAO {
         int rowsDeleted = 0;
         if (findTravelerByPassport(passport) != null) {
             TravelGroup travelGroup = travelGroupDAO.findTravelGroupByTraveler(passport);
+            //Reizigers kan niet verwijdert worden als er maar 1 Reiziger in de Database voorkomt..!!!
             if (travelGroup.getTravelerCount() > 1) {
                 String jpql1 = "delete from Traveler t where t.passport = :passport";
                 Query query1 = entityManager.createQuery(jpql1);
