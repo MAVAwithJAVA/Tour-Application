@@ -29,20 +29,17 @@ public class TourPlanCreator implements TravelPlanCreator {
 
     public void addTravelPlanToDatabase() {
         retrievedDestinationList = destinationDAO.retrieveDestinationList();
-//        retrievedDestinationList.forEach(System.out::println);
 
         System.out.println(ANSI_YELLOW + "Choose destinations in order of visit (up to 10 destinations)");
         chooseDestinationByOrder();
-//        selectedDestinationList.forEach(System.out::println);
 
         System.out.println( ANSI_YELLOW + "Choose start date and end date of travel (up to 31 days of travel)");
         chooseTravelDuration();
 
         System.out.println( ANSI_YELLOW + "Choose rating of trip (between 1 and 5 stars)");
         chooseAccommodationForEachDestination();
-//        selectedAccommodationList.forEach(System.out::println);
+
         chooseTransportCompanyBetweenDestinations();
-//        selectedTransportCompanyList.forEach(System.out::println);
 
         constructSegments();
 
@@ -73,7 +70,7 @@ public class TourPlanCreator implements TravelPlanCreator {
             }
         }
         System.out.println( ANSI_YELLOW+ "Selection has been finished");
-
+        // Travel segments in travel package: Data Ophalen vanuit Database...
         for (int index : destinationSelection) {
             if (index == 0) {
                 break;

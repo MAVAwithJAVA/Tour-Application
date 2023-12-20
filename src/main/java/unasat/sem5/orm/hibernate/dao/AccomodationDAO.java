@@ -11,10 +11,6 @@ public class AccomodationDAO {
 
     private EntityManager entityManager = JPAConfiguration.getEntityManager();
 
-//    public AccomodationDAO(EntityManager entityManager) {
-//        this.entityManager = entityManager;
-//    }
-
     public Accommodation findAccomodationByDestinationAndRating(Long destinationId, int rating) {
         List<Accommodation> accommodationList;
         Accommodation closestAccommodationByRating;
@@ -31,7 +27,6 @@ public class AccomodationDAO {
             closestAccommodationByRating = accommodationList.get(0);
         }
         entityManager.getTransaction().commit();
-//        System.out.println("Best Accomodation has been found for destination");
         return closestAccommodationByRating;
     }
 

@@ -1,6 +1,7 @@
 package unasat.sem5.orm.hibernate.application;
 
 
+import unasat.sem5.orm.hibernate.config.JPAConfiguration;
 import unasat.sem5.orm.hibernate.services.LoginService;
 
 public class App {
@@ -10,7 +11,6 @@ public class App {
 
         LoginService loginService = new LoginService();
         loginService.login();
-
 
     }
 }

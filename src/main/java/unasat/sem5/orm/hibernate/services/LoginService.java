@@ -1,9 +1,6 @@
 package unasat.sem5.orm.hibernate.services;
 
-import unasat.sem5.orm.hibernate.chainofresponsibilities.AdminReport;
-import unasat.sem5.orm.hibernate.chainofresponsibilities.AdminReportHandler;
 import unasat.sem5.orm.hibernate.dao.AccountDAO;
-import unasat.sem5.orm.hibernate.dao.TravelGroupDAO;
 import unasat.sem5.orm.hibernate.dao.TravelPackageDAO;
 import unasat.sem5.orm.hibernate.dao.TravelerDAO;
 import unasat.sem5.orm.hibernate.entities.Account;
@@ -33,8 +30,6 @@ public class LoginService {
     private Scanner scanner = new Scanner(System.in);
     private final AccountDAO accountDAO = new AccountDAO();
     private Account account;
-    private AdminReportHandler adminReportHandler;
-    private AdminReport adminReport;
     private final TravelerDAO travelerDAO = new TravelerDAO();
     private final TravelPackageDAO travelPackageDAO = new TravelPackageDAO();
     private TravelPackage latestTravelPackageFromAccount;
@@ -310,13 +305,13 @@ public class LoginService {
         inViewTravelPackageReport = true;
     }
 
-    public boolean isStringInt(String s) {
-        try {
-            Integer.parseInt(s);
-            return true;
-        } catch (NumberFormatException ex) {
-            return false;
-        }
-    }
+//    public boolean isStringInt(String s) {
+//        try {
+//            Integer.parseInt(s);
+//            return true;
+//        } catch (NumberFormatException ex) {
+//            return false;
+//        }
+//    }
 
 }
