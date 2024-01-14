@@ -39,9 +39,9 @@ public class RawReport implements Report {
         System.out.println( ANSI_YELLOW + "Travel group in travel package:");
         System.out.println(ANSI_BLUE+"************************************************************************************************************************************");
         System.out.println(travelGroup);
-        System.out.println( ANSI_YELLOW + "Travelers in travel package:");
-        System.out.println(ANSI_BLUE+"************************************************************************************************************************************");
-        System.out.println(travelers);
+//        System.out.println( ANSI_YELLOW + "Travelers in travel package:");
+//        System.out.println(ANSI_BLUE+"************************************************************************************************************************************");
+//        System.out.println(travelers);
         System.out.println();
         System.out.println( ANSI_YELLOW + "Travel plan in travel package:");
         System.out.println(ANSI_BLUE+"************************************************************************************************************************************");

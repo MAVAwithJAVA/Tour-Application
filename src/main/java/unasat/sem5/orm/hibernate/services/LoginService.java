@@ -276,7 +276,7 @@ public class LoginService {
         if (latestTravelPackageFromAccount != null) {
             do {
                 System.out.println(ANSI_YELLOW+"How would you like to view your latest travel package");
-                System.out.println(ANSI_GREEN+"1: Raw report \n2: Text file" +ANSI_RED+ "\n0: Cancel");
+                System.out.println(ANSI_GREEN+"1: Raw report " +ANSI_RED+ "\n0: Cancel");
                 selection = scanner.next();
                 switch (selection) {
                     case "1":
