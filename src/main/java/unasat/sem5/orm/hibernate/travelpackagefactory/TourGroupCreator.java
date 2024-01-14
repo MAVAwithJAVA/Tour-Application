@@ -6,7 +6,9 @@ import unasat.sem5.orm.hibernate.entities.TravelGroup;
 import unasat.sem5.orm.hibernate.entities.Traveler;
 
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class TourGroupCreator implements TravelGroupCreator {
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -30,11 +32,27 @@ public class TourGroupCreator implements TravelGroupCreator {
                 currentTravelGroup = travelGroupDAO.insertTravelGroup(new TravelGroup(travelerCount));
 
                 int travelerCountTotal = travelerCount + 1;
+                Set<Traveler> travelers = new HashSet<>();
+
                 while (travelerCount != 0) {
                     System.out.println(ANSI_GREEN + "Enter information of traveler no. " + (travelerCountTotal - travelerCount));
-                    travelerInput();
+                    System.out.println(ANSI_GREEN + "Enter first name: ");
+                    String firstName = scanner.next();
+                    System.out.println( ANSI_GREEN +"Enter last name: ");
+                    String lastName = scanner.next();
+                    System.out.println(ANSI_GREEN + "Enter passportNumber: ");
+                    String passport = scanner.next();
+                    System.out.println( ANSI_GREEN + "Enter age: ");
+                    int age = scanner.nextInt();
+                    travelers.add(new Traveler(firstName, lastName, passport, age, currentTravelGroup));
+
+                    //                    travelerInput();
                     travelerCount--;
                 }
+                TravelGroup travelGroup = new TravelGroup(travelerCount);
+                travelGroup.setTravelers(travelers);
+                currentTravelGroup = travelGroupDAO.insertTravelGroup(travelGroup);
+
                 System.out.println(ANSI_YELLOW + "Travel group has been added to database \n");
                 isSuccessful = true;
             } else {
@@ -44,16 +62,16 @@ public class TourGroupCreator implements TravelGroupCreator {
     }
 
     public void travelerInput() {
-        System.out.println(ANSI_GREEN + "Enter first name: ");
-        String firstName = scanner.next();
-        System.out.println( ANSI_GREEN +"Enter last name: ");
-        String lastName = scanner.next();
-        System.out.println(ANSI_GREEN + "Enter passportNumber: ");
-        String passport = scanner.next();
-        System.out.println( ANSI_GREEN + "Enter age: ");
-        int age = scanner.nextInt();
-//        travelerDAO.insertTraveler(new Traveler(rg.getRName(), rg.getRLName(), rg.getRPass(), rg.getRAge(), travelGroupDAO.findLastTravelGroupRecord()));
-        travelerDAO.insertTraveler(new Traveler(firstName, lastName, passport, age, currentTravelGroup));
+//        System.out.println(ANSI_GREEN + "Enter first name: ");
+//        String firstName = scanner.next();
+//        System.out.println( ANSI_GREEN +"Enter last name: ");
+//        String lastName = scanner.next();
+//        System.out.println(ANSI_GREEN + "Enter passportNumber: ");
+//        String passport = scanner.next();
+//        System.out.println( ANSI_GREEN + "Enter age: ");
+//        int age = scanner.nextInt();
+////        travelerDAO.insertTraveler(new Traveler(rg.getRName(), rg.getRLName(), rg.getRPass(), rg.getRAge(), travelGroupDAO.findLastTravelGroupRecord()));
+//        travelerDAO.insertTraveler(new Traveler(firstName, lastName, passport, age, currentTravelGroup));
     }
 
 }

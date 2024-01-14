@@ -11,7 +11,7 @@ public class AccomodationDAO {
 
     private EntityManager entityManager = JPAConfiguration.getEntityManager();
 
-    public Accommodation findAccomodationByDestinationAndRating(Long destinationId, int rating) {
+    public Accommodation setAccomodationByDestinationAndRating(Long destinationId, int rating) {
         List<Accommodation> accommodationList;
         Accommodation closestAccommodationByRating;
         entityManager.getTransaction().begin();

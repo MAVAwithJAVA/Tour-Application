@@ -106,7 +106,7 @@ public class TourPlanCreator implements TravelPlanCreator {
             rating = scanner.nextInt();
             if (rating >= 1 && rating <=5) {
                 for (Destination destination : selectedDestinationList) {
-                    selectedAccommodationList.add(accomodationDAO.findAccomodationByDestinationAndRating(destination.getDestinationId(), rating));
+                    selectedAccommodationList.add(accomodationDAO.setAccomodationByDestinationAndRating(destination.getDestinationId(), rating));
                 }
                 System.out.println(ANSI_YELLOW + "Accommodation selection has been made");
             } else {

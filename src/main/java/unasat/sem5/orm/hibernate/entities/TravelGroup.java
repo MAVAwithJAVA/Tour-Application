@@ -14,7 +14,7 @@ public class TravelGroup {
     @Column(name = "traveler_count", nullable = false)
     private int travelerCount;
 
-    @OneToMany(mappedBy = "travelGroup", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "travelGroup", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Traveler> travelers;
 
     public TravelGroup() {
@@ -44,8 +44,8 @@ public class TravelGroup {
         return travelers;
     }
 
-    public void addTravelers(Traveler traveler) {
-        travelers.add(traveler);
+    public void setTravelers(Set<Traveler> travelers) {
+        this.travelers = travelers;
     }
 
     @Override

@@ -285,7 +285,6 @@ public class LoginService {
                         inViewTravelPackageReport = false;
                         break;
                     case "2":
-                        // Design Pattern (Adapter Class Oproepen)
                         ReportAdapter reportAdapter = new ReportAdapter(new TextFile(latestTravelPackageFromAccount));
                         reportAdapter.displayRawReport();
                         inViewTravelPackageReport = false;
