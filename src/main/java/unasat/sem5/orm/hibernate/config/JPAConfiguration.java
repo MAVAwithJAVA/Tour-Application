@@ -5,6 +5,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class JPAConfiguration {
+
+    // design pattern Singelton
     private static final String PERSISTENCE_UNIT_NAME = "PERSISTENCE";
     private static EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
     private static EntityManager entityManager = factory.createEntityManager();
