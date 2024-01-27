@@ -5,6 +5,4 @@ import unasat.sem5.orm.hibernate.entities.TravelPackage;
 
 public interface TravelPackageCreator {
 
-    public TravelPackage addTravelPackageToDatabase(Account account);
-
 }

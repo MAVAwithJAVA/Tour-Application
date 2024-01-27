@@ -25,6 +25,7 @@ public class TravelPlanDAO {
         return lastTravelPlan;
     }
 
+
     public List<TravelPlan> retrieveTravelPlans() {
         entityManager.getTransaction().begin();
         String jpql = "select t from TravelPlan t order by t.startDate";
