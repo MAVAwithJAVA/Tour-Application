@@ -3,6 +3,8 @@ package unasat.sem5.orm.hibernate;
 import unasat.sem5.orm.hibernate.dao.TravelPackageDAO;
 import unasat.sem5.orm.hibernate.dao.TravelPlanDAO;
 import unasat.sem5.orm.hibernate.dao.TravelSegmentDAO;
+import unasat.sem5.orm.hibernate.reportchain.AdminReportHandler;
+import unasat.sem5.orm.hibernate.reportchain.ReportRequest;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,4 +19,4 @@ public class Main {
 
     }
     }
-}
+
